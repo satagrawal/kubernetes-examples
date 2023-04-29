@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: rollingupdate-strategy
   labels:
-    version: nanoserver-1709
+    version: nginx:1.22.0
 spec:
   strategy:
     type: RollingUpdate
@@ -13,13 +13,13 @@ spec:
   selector:
     matchLabels:
       app: web-app-rollingupdate-strategy
-      version: nanoserver-1709
+      version: nginx:1.22.0
   replicas: 3
   template:
     metadata:
       labels:
         app: web-app-rollingupdate-strategy
-        version: nanoserver-1709
+        version: nginx:1.22.0
     spec:
       containers:
         - name: web-app-rollingupdate-strategy
