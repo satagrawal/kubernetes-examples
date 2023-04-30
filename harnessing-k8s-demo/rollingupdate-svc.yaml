@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+namespace: oss-k8s-demo
+metadata: 
+  name: web-app-rollingupdate-strategy
+  labels: 
+    name: web-app-rollingupdate-strategy
+    version: nginx-1.22.0
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  selector: 
+    name: web-app-rollingupdate-strategy
+    version: nginx-1.22.0
+  type: LoadBalancer
