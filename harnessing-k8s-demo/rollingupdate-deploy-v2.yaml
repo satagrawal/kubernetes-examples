@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+namespace: oss-k8s-demo
+metadata:
+  name: rollingupdate-strategy
+  labels:
+    version: nginx-1.24.0
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: web-app-rollingupdate-strategy
+      version: nginx-1.24.0
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: web-app-rollingupdate-strategy
+        version: nginx-1.24.0
+    spec:
+      containers:
+        - name: web-app-rollingupdate-strategy
+          image: nginx:1.24.0
+          ports:
+          - containerPort: 80
