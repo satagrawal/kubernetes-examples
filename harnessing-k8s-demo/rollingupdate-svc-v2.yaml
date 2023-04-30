@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
-namespace: oss-k8s-demo
-metadata: 
+metadata:
+  namespace: oss-k8s-demo
   name: web-app-rollingupdate-strategy
   labels: 
     name: web-app-rollingupdate-strategy
