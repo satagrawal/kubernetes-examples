@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
-namespace: oss-k8s-demo
 metadata:
+  namespace: oss-k8s-demo
   name: rollingupdate-strategy
   labels:
     version: nginx-1.24.0
