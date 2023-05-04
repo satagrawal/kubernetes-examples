@@ -1,0 +1,17 @@
+Deployments simplifies updating 100’s of pods container images by just updating the container image name/version declaratively or imperatively
+Rolling update – create new pods first and then destroys old pods allowing no down-time for users of our services
+
+Recreate – This deployment Will first destroy all old pods and then create new pods.  This strategy is a big disadvantage.  If there are 100’s of pods as part of this deployment then destroying all of them first will make your services unavailable for your users.  This could be few seconds to minutes to hours.  PLEASE DO NOT DO THIS FOR PRODUCTION.  Good for Development/staging environments
+
+Blue / Green – Allows to have parallel services running at the same time.  Blue which is existing and Green which is now new one.   
+Disadvantage.  You will double the number of pods.  
+Advantage is you get to test in production environment without affecting the current users.  Once you see your new features are working as expected, you can route your services to new pods by selecting the new labels of the new pods and then remove the old blue
+
+Canary -  canary deployments help understand how new features will impact the overall system operation while containing the possible spillover to a small group of users. This strategy is adopted to test new functionality in a production environment on real users. Once the application is tested and the results are satisfactory, replicas of the new version are scaled up, while the old version is scaled down. We're essentially replacing the old version with the new one, but gradually.
+
+Another Variation of Canary deployment is Dark or A/B deployment strategy. This kind of deployment mainly works great to test features of a front end rather than the back end, as with canaries. also known as A/B Deployments. Users are unaware they are treated as testers for a new feature; they are in the “dark” about their role as testers. In parallel, metrics are collected to track the user experience. Things like these can be monitored:
+How are the users interacting with the feature?
+Are they finding it intuitive, and easy to use?
+How many choose to disable this new feature?
+And so on.
+
