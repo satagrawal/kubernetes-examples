@@ -1,0 +1,30 @@
+service discovery is the process of figuring out how to connect to a service.  Kubernetes service discovery find services through two approaches:
+Using the environment variables
+Using DNS based service discovery to resolve the service names to the service’s IP address
+ 
+Load balancing identifies containers by the DNS name or even IP address and redistributes traffic from high load to low load areas depending on the traffic congestion.
+
+Storage orchestration
+Kubernetes natively provides some solutions to manage storage.
+This feature allows automatic mounting of any storage type of your choice, from local storage, a public cloud provider such as AWS, Azure, and GCP etc., or any network storage system.
+
+Secret and configuration management
+This feature is important from the security aspect, as Kubernetes has a built-in mechanism of storing configuration values that you would prefer to keep private. Sensitive information such as username, passwords with encryption, and other credentials can be kept confidential.Kubernetes can also manage app configurations by establishing and maintaining consistency of a product’s functional, authentication, performance, and physical attributes.
+
+Automatic bin packing
+This is one of the significant features of Kubernetes. This is where Kubernetes helps in automatically placing containers based on their resource requirements, limits, and other constraints, without compromising on availability.
+Mix critical and best-effort workloads to manage utilization and save more resources. 
+Kubernetes can manage resources, and can automatically specify how each container in a pod uses CPU, Memory etc.
+
+Self-healing
+This feature of Kubernetes acts as a superman. Containers that fail because of any reason are automatically restarted. If any node fails, the containers that were running on the failed node are redistributed to other nodes. 
+Kubernetes automatically stops the unresponsive containers if they do not respond to the user-defined health checks and restrict traffic until containers are ready.
+
+Automated rollouts and rollbacks
+This feature allows teams working on Kubernetes to define the state of deployed containers, systematically roll out changes with ease, and automatically rollback on failure or in any cases of emergency or alerts.
+
+Kubernetes abstractions
+
+In order to manage containerized applications, Kubernetes uses a set of abstractions, including deployments, replicasets, pods & servicesThese abstractions allow Kubernetes to manage containerized microservice applications at scale and provide a consistent and predictable environment for application delivery.
+
+
