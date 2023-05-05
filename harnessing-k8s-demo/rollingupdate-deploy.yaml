@@ -12,7 +12,7 @@ spec:
     matchLabels:
       app: color-webapp
       version: blue
-  replicas: 3
+  replicas: 4
   template:
     metadata:
       labels:
