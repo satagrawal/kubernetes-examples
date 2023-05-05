@@ -1,54 +1,33 @@
-Lets start with a basic understanding of the Kubernetes cluster architecture.  As seen in this slide we’re going to use an analogy of cargo ships and a seaport facility to understand the architecture of Kubernetes.
-The purpose of kubernetes is to host you microservices as containers in an automated fashion so that we can easily deploy as many instances of our microservices as required and easily enable communication between different microservices within our application.  So there are many things involved that work together to make this possible.  Let’s take a very high level look of the kubernetes cluster architecture
- 
+Let’s start with a basic understanding of the Kubernetes cluster architecture.  As seen in this slide we’re going to use an analogy of cargo ships and a seaport facility to understand the architecture of Kubernetes.
+The purpose of Kubernetes is to host your microservices as containers in an automated fashion so that we can easily deploy as many instances of our microservices as required and easily enable communication between different microservices within our application.  So, there are many things involved that work together to make this possible.  Let’s take a high level look at the Kubernetes cluster architecture
 Master
-Kubernetes Master (control plane) is the main component of managing a Kubernetes cluster. According to the diagram, the Main Control Center of the port will be considered as our Master node.
-Just like you see in the diagram, Kubernetes master has a few more components than the worker nodes.  These components are also called as control plane components.  They are ETCD cluster, kube Controller Manager, kube API Server and kube Scheduler which combine together to manage the Kubernetes cluster.
- 
+The Kubernetes Master, also known as the control plane, can be compared to the main control center of a ship's port facility. Just like the main control center of a port that has systems for managing ship arrivals and departures, loading, and unloading cargo, and coordinating with other port facilities. Kubernetes master node has components for managing and scheduling containerized applications, monitoring the cluster's health, and maintaining configuration data. These components include the ETCD cluster, kube Controller Manager, kube API Server, and kube Scheduler, which work together to manage the Kubernetes cluster.
 ETCD Cluster
-There is a lot of information that you need to store regarding the port’s daily operations. The number of ships that come to the port, the number of containers that are loaded and unloaded on each ship, container load and unload timestamps and which ships can handle which and what kind of containers? etc. The port needs to ensure that this data is recorded somewhere and available on-demand. The Data Store Facility in the Port will store all of the data.
-Similarly in Kubernetes terms, the Data Store is called the ETCD cluster. It’s a highly available a key-value based distributed database which stores all the critical data related to the Kubernetes cluster such as config data, cluster state and metadata.
-Kubernetes use ETCD functionalities to monitor the cluster changes.  So if you ever want to back-up cluster data because the cluster failed, ETCD helps with that.
- 
+When it comes to the daily operations of a port, there is a lot of information that needs to be stored, such as the number of ships arriving, the containers being loaded and unloaded, their load and unload timestamps, and so on. This information is stored in a data store facility. Similarly, in Kubernetes, we have the ETCD cluster, which is like the data storage facility of a port. It's a key-value pair distributed database that stores all the critical data related to the Kubernetes cluster, including configuration data, cluster state, metadata, nodes & container state data. Kubernetes uses ETCD functionalities to monitor cluster changes, and it's also useful for backing up data in case of a cluster failure.
 Kube Controller Manager
-There are different offices In the seaport that are assigned to special departments.
-For example, the operations team takes care of ship handling, traffic control, etc. They deal with issues related to damages, the routes, the different ships state, etc. 
-
-The cargo team takes care of containers.  when containers get damaged or destroyed, they make sure new containers are made available.
-
-You also have the services office that takes care of the IT and communications between different ships
-
-Similarly, in Kubernetes, we have controllers available that take care of different areas. The node controller takes care of nodes. They’re responsible for onboarding new nodes to the cluster handling situations where nodes become unavailable or get destroyed.
-And the replication controller ensures that the desired number of containers are running at all times in your replication group.
+"Let's compare the Controller Manager in Kubernetes to the Controller Manager in a ship's port. Both are responsible for managing and controlling the operations within their respective domains. The Kubernetes Controller Manager ensures that the desired state of the cluster matches the current state, just as the ship's port Controller Manager ensures that the port's operations are running smoothly. Both use various controllers to achieve their objectives Kubernetes Controller Manager has controllers such as Node, and replication controllers, and the ship's port Controller Manager may have controllers for cargo handling or ship movement. In summary, both Controller Managers play a vital role in their respective domains to ensure efficient operations."
 
 Kube API Server
-So until now we have seen different components like the different offices, the different ships, the data store, the cranes, etc. But how do these communicate with each other?
-How does one office reach the other office and who manages them all at a high level. Just like you see the light house in the diagram which is nothing but out Kube API server component which is the primary management component of Kubernetes.
-The Kube API server is responsible for orchestrating all operations within the cluster. It exposes the Kubernetes API, which is used by external users to perform management operations on the cluster, as well as the various controllers to monitor the state of the cluster and make necessary changes as required and allow the worker nodes to communicate with the Master
- 
- 
+The Kubernetes API Server acts as the gateway for all the operations that are performed on the Kubernetes cluster. It is like the communication hub of the cluster. Whenever a user or an application wants to interact with the Kubernetes cluster, they do so by communicating with the API server.
+Similarly, in a ship's port, there is a component known as the Port Operations Center. It acts as the central communication hub for all the operations that take place in the port. Whenever someone needs to communicate with the port, they do so through the Operations Center.
+So, both the Kubernetes API Server and the Port Operations Center act as the central point of communication for their respective systems.
 Kube-Scheduler
 When ships arrive, you load containers on them using cranes.
-The cranes identify the containers that need to be placed on ships. It identifies the right ship based on its size, its capacity, the number of containers already on the ship, and any other conditions such as the destination of the ship, the type of containers it is allowed to carry, etc.
-So those are schedulers in a Kubernetes cluster, and Scheduler identifies the right node to place a container on based on the containers’ resource requirements, the worker nodes capacity or any other policies or constraints, such as taints and tolerations or node affinity rules that are on them.
- 
- 
+The cranes identify the containers that need to be placed on ships. It identifies the right ship based on its size, its capacity, number of containers already on the ship, and any other conditions such as the destination of the ship, the type of containers it is allowed to carry, etc.
+So those are schedulers in a Kubernetes cluster, and Scheduler identifies the right node to place a container on based on the containers’ resource requirements, the worker nodes’ capacity, or any other policies or constraints that are on them.
+ 
+Now let us turn our attention to Cargo Shops which are worker nodes in a Kubernetes cluster.
+
 Worker Nodes
 A worker node is basically a compute instance that will run the cluster workload as containers. There could be thousands of worker nodes in a high-end Kubernetes cluster.
-According to the example, Ships will be the worker nodes.
-It has important components such as Kubelet, Kube Proxy and Container Runtime Engine.
- 
+According to the example, Ships will be the worker nodes.
+It has important components such as Kubelet, Kube Proxy, and Container Runtime Engine.
 Container Runtime Engine
-Now, we’re working with containers here, containers are everywhere. So we need everything to be container compatible. Our applications are in the form of containers.
-The different components that form the entire management system on the master node could be hosted in the form of containers. The DNS service networking solution can all be deployed in the form of containers. So we need this software that can run containers.
-And that’s the container runtime engine, a popular one being Docker. So we need Docker or it’s supported equivalent installed on all the nodes in the cluster, including the master nodes, if you wish to host the control plane components as containers. Now, it doesn’t always have to be Docker. Kubernetes supports other runtime engines as well
- 
+Now, we’re working with containers here, containers are everywhere. So, we need everything to be container compatible. Our applications are in the form of containers.
+The different components that form the entire management system on the master node could be hosted in the form of containers. The DNS service networking solution can all be deployed in the form of containers. So, we need this software that can run containers.
+And that’s the container runtime engine, the most common one is Docker but does have to be Docker.  There are other Container runtimes that can do the same job efficiently.  So, we need a container runtime engine installed on all the nodes in the cluster.  including the master nodes, if you wish to host the control plane 
+components as containers then that Container Runtime engine has to be installed on the master as well.
 Kubelet
-Let us now turn our focus on to the cargo ships. Now every ship has a captain, the captain is responsible for managing all activities on these ships.
-The captain is responsible for liaising with the master control center, starting with letting the Master know that they’re interested in joining the group.  Want to receive information about the containers to be loaded on the their ship and want those appropriate containers loaded on the ship as required. They will also send reports back to the master about the status of their ship and the status of the containers on the ship, etc.
-Now the captain of the ship is the Kubelet in Kubernetes. A Kubelet is an agent that runs on each node in a cluster. It listens for instructions from the Kube API server and deploys or destroys containers on the nodes as required. The Kube API server periodically fetches status reports from the Kubelet to monitor the status of nodes and containers on them.
- 
-Kube Proxy
-Now the Kubelet was more of a captain on the ship that manages containers on the ship. But the applications running on the worker nodes need to be able to communicate with each other.
-For example, you might have a web server running in one container on one of the nodes and a database server running on another container on another node. How would the webserver reads the database server on the other node?
-Communication between worker nodes are enabled by another component that runs on the worker node known as the Kube proxy service. The Kube proxy service ensures that the necessary rules are in place on the worker nodes to allow the containers running on them to reach each other.
+Now every ship has a captain, and the captain is responsible for managing all activities on these ships.
+The captain is responsible for liaising with the master control center, starting with letting the Master know that they’re interested in joining the group.  Want to receive information about the containers to be loaded on their ship and want those appropriate containers loaded on the ship as required. They will also send reports back to the master about the status of their ship and the status of the containers on the ship, etc.
+Now the captain of the ship is the Kubelet in Kubernetes. A Kubelet is an agent that runs on each node in a cluster. It listens for instructions from the Kube API server and deploys or destroys containers on the nodes as required. The Kube API server periodically fetches status reports from the Kubelet to monitor the status of nodes and containers on them.
