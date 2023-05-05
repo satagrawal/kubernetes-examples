@@ -4,7 +4,7 @@ metadata:
   namespace: oss-k8s-demo
   name: color-webapp-service
   labels: 
-    name: color-webapp
+    app: color-webapp
     version: blue
 spec:
   ports:
@@ -13,6 +13,6 @@ spec:
       targetPort: 8080
       nodePort: 30120
   selector: 
-    name: color-webapp
+    app: color-webapp
     version: blue
   type: NodePort
