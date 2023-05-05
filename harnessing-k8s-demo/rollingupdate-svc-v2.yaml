@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: oss-k8s-demo
-  name: color-webapp-service
+  name: color-webapp-service-v2
   labels: 
     app: color-webapp
     version: green
