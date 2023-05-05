@@ -4,6 +4,7 @@ metadata:
   namespace: oss-k8s-demo
   name: color-webapp-deploy
   labels:
+    app: color-webapp
     version: blue
 spec:
   strategy:
