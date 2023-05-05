@@ -2,28 +2,25 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: oss-k8s-demo
-  name: rollingupdate-strategy
+  name: color-webapp-deploy
   labels:
-    version: nginx-1.24.0
+    version: green
 spec:
   strategy:
     type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 2
-      maxUnavailable: 1
   selector:
     matchLabels:
-      app: web-app-rollingupdate-strategy
-      version: nginx-1.24.0
-  replicas: 3
+      app: color-webapp
+      version: green
+  replicas: 4
   template:
     metadata:
       labels:
-        app: web-app-rollingupdate-strategy
-        version: nginx-1.24.0
+        app: color-webapp
+        version: green
     spec:
       containers:
-        - name: web-app-rollingupdate-strategy
-          image: nginx:1.24.0
+        - name: color-webapp
+          image: kodekloud/simple-webapp:green
           ports:
-          - containerPort: 80
+          - containerPort: 8080
