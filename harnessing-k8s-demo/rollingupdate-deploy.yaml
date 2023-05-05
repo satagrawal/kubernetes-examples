@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: oss-k8s-demo
-  name: color-webapp-deploy-v2
+  name: color-webapp-deploy
   labels:
     app: color-webapp
     version: blue
