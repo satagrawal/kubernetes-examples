@@ -1,0 +1,43 @@
+git clone https://github.com/satagrawal/kubernetes-examples.git
+cd kubernetes-examples/
+cd harnessing-k8s-demo/  
+kubectl create ns oss-k8s-demo
+kubectl apply -f rollingupdate-deploy.yaml
+kubectl apply -f rollingupdate-svc.yaml
+kubectl get deployments -n oss-k8s-demo
+kubectl get rs -n oss-k8s-demo
+kubectl get pods -n oss-k8s-demo
+kubectl get svc -n oss-k8s-demo
+
+kubectl set image deployment/color-webapp-deploy color-webapp=kodekloud/simple-webapp:green --record -n oss-k8s-demo
+kubectl rollout status deployment/color-webapp-deploy -n oss-k8s-demo
+kubectl get pods -n oss-k8s-demo
+
+kubectl get deployments -n oss-k8s-demo
+kubectl get rs -n oss-k8s-demo
+
+
+kubectl rollout history deployment/color-webapp-deploy -n oss-k8s-demo
+kubectl rollout undo deployment/color-webapp-deploy -n oss-k8s-demo --to-revision=1
+
+kubectl rollout status deployment/color-webapp-deploy -n oss-k8s-demo
+kubectl get pods -n oss-k8s-demo
+
+kubectl get deployments -n oss-k8s-demo
+kubectl get rs -n oss-k8s-demo
+
+kubectl apply -f rollingupdate-deploy-v2.yaml
+kubectl apply -f rollingupdate-svc-v2.yaml
+kubectl get deployments -n oss-k8s-demo
+kubectl get rs -n oss-k8s-demo
+kubectl get pods -n oss-k8s-demo
+kubectl get svc -n oss-k8s-demo
+
+kubectl delete deployment color-webapp-deploy -n oss-k8s-demo
+kubectl delete service color-webapp-service -n oss-k8s-demo
+kubectl get deployments -n oss-k8s-demo
+kubectl get rs -n oss-k8s-demo
+kubectl get pods -n oss-k8s-demo
+kubectl get svc -n oss-k8s-demo
+
+kubectl describe svc color-webapp-service -n oss-k8s-demo
