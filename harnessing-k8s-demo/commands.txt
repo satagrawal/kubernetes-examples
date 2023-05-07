@@ -9,9 +9,9 @@ kubectl get rs -n oss-k8s-demo
 kubectl get pods -n oss-k8s-demo
 kubectl get svc -n oss-k8s-demo
 
-kubectl scale deployment/color-webapp-deploy --replicas=10 -n oss-k8s-demo
+kubectl scale deployment/color-webapp-deploy -n oss-k8s-demo --replicas=8
 kubectl apply -f canary-deployment.yaml
-kubectl scale deployment/color-webapp-canary-deploy --replicas=2 -n oss-k8s-demo
+kubectl scale deployment/color-webapp-canary-deploy -n oss-k8s-demo --replicas=2
 
 kubectl set image deployment/color-webapp-deploy color-webapp=kodekloud/simple-webapp:green --record -n oss-k8s-demo
 kubectl rollout status deployment/color-webapp-deploy -n oss-k8s-demo
