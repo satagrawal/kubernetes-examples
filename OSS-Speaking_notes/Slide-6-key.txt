@@ -11,9 +11,9 @@ This feature allows automatic mounting of any storage type of your choice, from 
 
  
 Secret and configuration management
-This feature is important from the security aspect, as Kubernetes has a built-in mechanism for storing configuration values that you would prefer to be kept private. 
-Sensitive information such as usernames, passwords with encryption, and other credentials can be kept confidential.
-Kubernetes can also manage app configurations by establishing and maintaining consistency of a product’s functional, authentication, performance, and physical attributes.
+Secret and configuration management is a critical feature of Kubernetes that plays a significant role in enhancing the security of your applications. It provides a secure mechanism for storing confidential information, such as passwords, API keys, and other credentials, by encrypting them and controlling access to them via role-based access control (RBAC).
+
+Moreover, Kubernetes also offers robust configuration management capabilities, enabling you to manage application configuration data efficiently. By maintaining the consistency of the application's functional, authentication, performance, and physical attributes, it helps avoid configuration drift and ensures that your application runs smoothly across different environments.
 
 Automatic bin packing
 This is one of the significant features of Kubernetes. This is where Kubernetes helps in automatically placing containers based on their resource requirements, limits, and other constraints, without compromising on availability.
