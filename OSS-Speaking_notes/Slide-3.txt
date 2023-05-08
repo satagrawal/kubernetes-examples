@@ -1,15 +1,13 @@
-•	Kubernetes being the buzz around has made enormous noise in the recent few years because of the out-of-the-box features it provides to organizations.
+ Kubernetes being the buzz around has made enormous noise in the recent few years because of the out-of-the-box features it provides to organizations.
 
-•	It has become a defacto tool for container deployments on the cloud for firms around the globe; it has opened a whole new era of innovation on the cloud for businesses today.
+ It has become a defacto tool for container deployments on the cloud for firms around the globe; it has opened a whole new era of innovation on the cloud for businesses today.
 
-•	Kubernetes is an open-source orchestration platform that automates containerized applications' deployment, scaling, and management. It was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF) 
+ Kubernetes is an open-source orchestration platform that automates containerized applications' deployment, scaling, and management. It was originally developed by Google and is now maintained by the Cloud Native Computing Foundation (CNCF) 
 
-•	Kubernetes is extensively used in production environments to handle containers.
+ Kubernetes is extensively used in production environments to handle containers.
 
-•	As businesses continue to adopt cloud-native architectures, the need for scalable, reliable, and manageable application delivery systems becomes increasingly important.
+ As businesses continue to adopt cloud-native architectures, the need for scalable, reliable, and manageable application delivery processes becomes increasingly important.
 
-•	Kubernetes can be a powerful platform for managing containerized microservices or applications at scale, allowing teams to focus on building and delivering high-quality applications faster with easy-to-change configurations and versions.
+ Kubernetes can be a powerful platform for managing containerized microservices or applications at scale, allowing teams to focus on building and delivering high-quality applications faster with easy-to-change configurations and versions.
 
-•	It can work anywhere whether it is hosted on an on-prem data center, private cloud, hybrid cloud, or with public Cloud providers and with almost any type of container runtime engine. 
-
-•	Because it can work on various infrastructure and environment configurations, you can use the same approach regardless of whether you are running it on your own laptops, data centers, or the Cloud.
+ It can work anywhere with any container runtimes and on various infrastructure and environment configurations.  So, you can use the same approach regardless whether you host it on your own laptops, on an on-prem data center, private/hybrid cloud, or with public Cloud providers.
