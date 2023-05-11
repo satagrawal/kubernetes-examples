@@ -1,1 +1,27 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: oss-k8s-demo
+  name: color-webapp-deploy
+  labels:
+    app: color-webapp
+    version: blue
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: color-webapp
+      version: blue
+  replicas: 10
+  template:
+    metadata:
+      labels:
+        app: color-webapp
+        version: blue
+    spec:
+      containers:
+        - name: color-webapp
+          image: kodekloud/simple-webapp:blue
+          ports:
+          - containerPort: 8080
