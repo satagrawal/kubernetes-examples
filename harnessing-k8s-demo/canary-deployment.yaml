@@ -5,23 +5,23 @@ metadata:
   name: color-webapp-canary-deploy
   labels:
     app: color-webapp
-    version: blue
+    version: green
 spec:
   strategy:
     type: RollingUpdate
   selector:
     matchLabels:
       app: color-webapp
-      version: blue
+      version: green
   replicas: 1
   template:
     metadata:
       labels:
         app: color-webapp
-        version: blue
+        version: green
     spec:
       containers:
         - name: color-webapp
-          image: kodekloud/simple-webapp:green
+          image: kodekloud/simple-webapp:blue
           ports:
           - containerPort: 8080
